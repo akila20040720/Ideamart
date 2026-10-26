@@ -1,4 +1,4 @@
-:root {
+      :root {
         color-scheme: light;
         box-sizing: border-box;
         padding-top: env(safe-area-inset-top, 0px);
@@ -23,15 +23,7 @@
       [hidden]:not([hidden="until-found" i]) {
         display: none !important;
       }
-
-    <title>Ideamart (Copy)</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap"
-    />
-
+ 
       /* Type echoes the rounded geometric logo (Comfortaa + Nunito). Layout: white spatial HUD — liquid orb over a perspective grid, light-trace borders on primary actions, vivid colour panels; APIs lead, docs/portal always one click away */
       @property --a {
         syntax: "<angle>";
@@ -77,6 +69,9 @@
         --f-mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
         color-scheme: light;
       }
+      
+
+
       * {
         box-sizing: border-box;
       }
@@ -766,6 +761,153 @@
         width: 120%;
         height: 112%;
         z-index: 1;
+      }
+      .orb-phone {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 2;
+        width: 142px;
+        height: 278px;
+        padding: 7px;
+        translate: -50% -50%;
+        border: 2px solid rgba(15, 14, 23, 0.9);
+        border-radius: 29px;
+        background: #17131c;
+        box-shadow:
+          0 22px 40px -20px rgba(15, 14, 23, 0.65),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.32),
+          0 0 0 10px rgba(255, 255, 255, 0.12);
+        transform: translateY(0) rotate(-3deg);
+        animation: phone-float 5s ease-in-out infinite;
+      }
+      .orb-phone::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        z-index: 2;
+        width: 48px;
+        height: 13px;
+        translate: -50% 0;
+        border-radius: 0 0 10px 10px;
+        background: #17131c;
+      }
+      .phone-screen {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 22px;
+        background: #fff8ef;
+        color: var(--ink);
+      }
+      .phone-status {
+        display: flex;
+        justify-content: space-between;
+        padding: 13px 12px 5px;
+        font: 700 8px var(--f-mono);
+      }
+      .phone-screen h4 {
+        margin: 9px 12px 12px;
+        font: 700 15px/1.1 var(--f-hud);
+      }
+      .phone-card {
+        margin: 0 10px 9px;
+        padding: 10px;
+        border-radius: 13px;
+        background: var(--berry);
+        color: #fff;
+        animation: phone-card 6s ease-in-out infinite;
+      }
+      .phone-card strong,
+      .phone-card small {
+        display: block;
+      }
+      .phone-card strong {
+        font: 700 11px var(--f-hud);
+      }
+      .phone-card small {
+        margin-top: 4px;
+        font: 500 8px var(--f-mono);
+        opacity: 0.82;
+      }
+      .phone-list {
+        display: grid;
+        gap: 7px;
+        margin: 0 10px;
+      }
+      .phone-list span {
+        display: block;
+        height: 22px;
+        border-radius: 8px;
+        background: rgba(15, 14, 23, 0.08);
+        animation: phone-list 6s ease-in-out infinite;
+      }
+      .phone-list span:nth-child(2) {
+        width: 78%;
+        animation-delay: 0.25s;
+      }
+      .phone-list span:nth-child(3) {
+        width: 88%;
+        animation-delay: 0.5s;
+      }
+      .phone-dock {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 10px;
+        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.82);
+        font: 700 8px var(--f-mono);
+        color: var(--r);
+      }
+      @keyframes phone-float {
+        50% {
+          transform: translateY(-8px) rotate(3deg);
+        }
+      }
+      @keyframes phone-card {
+        0%,
+        10% {
+          transform: translateX(-110%);
+          opacity: 0;
+        }
+        22%,
+        82% {
+          transform: none;
+          opacity: 1;
+        }
+        94%,
+        100% {
+          transform: translateX(110%);
+          opacity: 0;
+        }
+      }
+      @keyframes phone-list {
+        0%,
+        18% {
+          transform: scaleX(0.35);
+          transform-origin: left;
+          opacity: 0.2;
+        }
+        32%,
+        86% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.45;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .orb-phone,
+        .phone-card,
+        .phone-list span {
+          animation: none;
+        }
       }
       .orb-fallback {
         position: absolute;
@@ -1625,12 +1767,12 @@
       .ifw-band .ifw-logo {
         width: min(320px, 80%);
         margin-bottom: 6px;
-        margin-left: 0;
+        margin-left: 150px;
         margin-right: auto;
         justify-self: start;
       }
       .ifw-hero-logo {
-        width: min(320px, 80%);
+        width: min(320px, 90%);
       }
       .reach {
         display: grid;
